@@ -6,8 +6,16 @@ function [consistency_state] = consistent_coeff_matrix_and_props(num_rows_coeffs
   % monomial total degree known_degree, calculate the expected number of
   % columns in the coefficients matrix
   expected_cols_in_coeffs_mat = 0;
+
+  if known_degree == 0
+    % no coefficients are known, we are just creating or overwriting, so
+    % return true
+    consistency_state = true;
+    return;
+  end
+
   for i1 = 1 : 1 : abs(known_degree) %abs to prevent some infinite loop in case of negative argument
-    expected_cols_in_coeffs_mat = expected_cols_in_coeffs_mat + nchoosek(nu + known_degree - 1, known_degree);
+    expected_cols_in_coeffs_mat = expected_cols_in_coeffs_mat + nchoosek(nu + i1 - 1, i1);
   end
 
   % check consistency of coefficients matrix and dimensions nu, n, and
