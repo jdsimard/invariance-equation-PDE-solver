@@ -92,10 +92,3 @@ symbolic_pde_solver.SaveSolutionAsFunctionFile(fname.props,fname.coeffs,fname.ne
 
 
 
-
-
-
-
-
-% function to check the PDE error
-
