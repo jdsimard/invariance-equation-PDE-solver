@@ -15,7 +15,8 @@
 
 % Load the symbolic functions, symbolic variables, and associated
 % dimensions
-[fns.s,fns.ell,fns.f,vars.w,vars.u,vars.x,dim.nu,dim.m,dim.n] = fn_auxiliary.load_functions_defining_pde('proto_example_linear_linear.mat');
+example_filepath = '+symbolic_pde_solver\+examples\proto_example_linear_linear.mat';
+[fns.s,fns.ell,fns.f,vars.w,vars.u,vars.x,dim.nu,dim.m,dim.n] = symbolic_pde_solver.internal_utils.file_io.load_functions_defining_pde(example_filepath);
 
 
 
@@ -29,9 +30,9 @@
 % (here, zero) of any differentiable mapping by finding the jacobian of the
 % mapping and then evaluating it at the point. In this completely linear
 % scenario, these linear coefficients completely determine the problem.
-mats.S = double(subs(fn_auxiliary.get_jacobian(fns.s), vars.w, zeros(size(vars.w,1),size(vars.w,2))));
-mats.L = double(subs(fn_auxiliary.get_jacobian(fns.ell), vars.w, zeros(size(vars.w,1),size(vars.w,2))));
-mats.AandB = double(subs(fn_auxiliary.get_jacobian(fns.f), vars.x, zeros(size(vars.x,1),size(vars.x,2))));
+mats.S = double(subs(symbolic_pde_solver.internal_utils.symbolic.get_jacobian(fns.s), vars.w, zeros(size(vars.w,1),size(vars.w,2))));
+mats.L = double(subs(symbolic_pde_solver.internal_utils.symbolic.get_jacobian(fns.ell), vars.w, zeros(size(vars.w,1),size(vars.w,2))));
+mats.AandB = double(subs(symbolic_pde_solver.internal_utils.symbolic.get_jacobian(fns.f), vars.x, zeros(size(vars.x,1),size(vars.x,2))));
 mats.A = mats.AandB(:,1:dim.n);
 mats.B = mats.AandB(:,dim.n+1:dim.n+dim.m);
 

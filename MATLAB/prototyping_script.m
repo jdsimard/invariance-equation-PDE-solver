@@ -1,8 +1,8 @@
-addpath('proto-examples\');
 
-filename_fns_defining_pde = 'proto-examples\proto_example_linear_linear.mat';
-[s,ell,f,w,u,x,nu,m,n] = fn_auxiliary.load_functions_defining_pde(filename_fns_defining_pde);
-fn_auxiliary.setup_new_solver_files(s,ell,f,'solution_proto_example_linear_linear');
+
+filename_fns_defining_pde = '+symbolic_pde_solver\+examples\proto_example_linear_linear.mat';
+[s,ell,f,w,u,x,nu,m,n] = symbolic_pde_solver.internal_utils.file_io.load_functions_defining_pde(filename_fns_defining_pde);
+symbolic_pde_solver.internal_utils.solver.setup_new_solver_files(s,ell,f,'solution_proto_example_linear_linear');
 
 clear all;
 
@@ -13,7 +13,7 @@ filenames.symfuns = strcat(filenames.prefix,'_symfuns.','mat');
 
 desired_total_order = 5;
 for i1 = 1 : 1 : desired_total_order
-  if fn_auxiliary.solve_coefficients_of_next_total_order(filenames.properties,filenames.coefficients,filenames.symfuns) == false
+  if symbolic_pde_solver.internal_utils.solver.solve_coefficients_of_next_total_order(filenames.properties,filenames.coefficients,filenames.symfuns) == false
     % the coefficients were not successfully determined for some reason,
     % exit
     return;

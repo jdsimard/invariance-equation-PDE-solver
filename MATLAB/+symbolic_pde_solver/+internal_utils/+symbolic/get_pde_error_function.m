@@ -14,7 +14,7 @@ function [fn_e] = get_pde_error_function(fn_pi,fn_s,fn_ell,fn_f)
 %   return: fn_e, the error function
   
   % get the jacobian of pi, required for building the PDE
-  d_pi = fn_auxiliary.get_jacobian(fn_pi);
+  d_pi = symbolic_pde_solver.internal_utils.symbolic.get_jacobian(fn_pi);
   
   % directly assign the symfun e(w) by converting symfuns of d_pi, pi, s,
   % ell, and f to sym equations and performing symbolic composition

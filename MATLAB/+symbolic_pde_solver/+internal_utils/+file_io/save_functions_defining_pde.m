@@ -15,7 +15,7 @@ function [consistency_state] = save_functions_defining_pde(s_fn, ell_fn,f_fn,fil
 %           been saved
   
   % check the consistency of the functions
-  if fn_auxiliary.consistent_functions_defining_pde(s_fn,ell_fn,f_fn) == false
+  if symbolic_pde_solver.internal_utils.input_verification.consistent_functions_defining_pde(s_fn,ell_fn,f_fn) == false
     % the functions don't form a well-posed PDE, return false
     consistency_state = false;
     return;

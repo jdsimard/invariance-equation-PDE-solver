@@ -3,7 +3,7 @@ function [consistency_state] = save_solution_files(nu,m,n,known_degree,coefficie
 %   Detailed explanation goes here
   
   % check consistency of the solution properties and coefficients
-  if fn_auxiliary.consistent_coeff_matrix_and_props(size(coefficients_matrix,1),size(coefficients_matrix,2),nu,n,known_degree) == false
+  if symbolic_pde_solver.internal_utils.input_verification.consistent_coeff_matrix_and_props(size(coefficients_matrix,1),size(coefficients_matrix,2),nu,n,known_degree) == false
     % the solution properties and coefficients are inconsistent, don't
     % write the files, return false
     consistency_state = false;

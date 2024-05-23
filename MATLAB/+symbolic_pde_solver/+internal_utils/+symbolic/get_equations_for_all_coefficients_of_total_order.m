@@ -6,7 +6,7 @@ function [eqns] = get_equations_for_all_coefficients_of_total_order(fn_e,desired
   % total degree, we must first get a representation of all nonnegative
   % integer multisets of with elements summing to that degree
   w = argnames(fn_e);
-  multiset_combos = fn_auxiliary.get_multiset_combinations(length(w),desired_total_order);
+  multiset_combos = symbolic_pde_solver.internal_utils.multiset.get_multiset_combinations(length(w),desired_total_order);
 
   % each row of multiset_combos uniquely represents a coefficient of fn_e
   % with total monomial order desired_total_order, so for each row of
@@ -21,7 +21,7 @@ function [eqns] = get_equations_for_all_coefficients_of_total_order(fn_e,desired
   % use more space, less time.
   eqns = [];
   for i1 = 1 : 1 : size(multiset_combos,1)
-    eqns = [eqns, fn_auxiliary.get_equation_for_coefficient(fn_e,multiset_combos(i1,:))];
+    eqns = [eqns, symbolic_pde_solver.internal_utils.symbolic.get_equation_for_coefficient(fn_e,multiset_combos(i1,:))];
   end
 
 end

@@ -9,7 +9,7 @@ function [s, ell, f, w, u, x, nu, m, n] = load_functions_defining_pde(filename)
   f = matfile_workspace.f;
 
   % check consistency of mappings
-  if fn_auxiliary.consistent_functions_defining_pde(s,ell,f) == false
+  if symbolic_pde_solver.internal_utils.input_verification.consistent_functions_defining_pde(s,ell,f) == false
     % this is a bad save file, return
     return;
   end

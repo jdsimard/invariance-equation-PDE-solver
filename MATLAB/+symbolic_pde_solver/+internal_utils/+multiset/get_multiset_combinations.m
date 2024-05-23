@@ -15,7 +15,7 @@ function [multiset_combinations_matrix] = get_multiset_combinations(num_vars,tot
 		multiset_combinations_matrix = [multiset_combinations_matrix; total_degree];
 	else
 		for i1 = total_degree : -1 : 0
-			tail = fn_auxiliary.get_multiset_combinations(num_vars-1,total_degree-i1);
+			tail = symbolic_pde_solver.internal_utils.multiset.get_multiset_combinations(num_vars-1,total_degree-i1);
 			for i2 = 1 : 1 : size(tail,1)
 				multiset_combinations_matrix = [multiset_combinations_matrix; [i1, tail(i2,:)]];
 			end

@@ -4,7 +4,7 @@ function [vec_monomial_terms] = get_monomial_terms_of_total_order(var_w,total_de
 
   % construct a matrix containing, in rows, every possible combination of
   % non-negative integer powers summing to the total degree
-  multi_set = fn_auxiliary.get_multiset_combinations(length(var_w),total_degree);
+  multi_set = symbolic_pde_solver.internal_utils.multiset.get_multiset_combinations(length(var_w),total_degree);
 
   % the total number of monomial terms that need to be constructed
   num_new_monomials = nchoosek(length(var_w) + total_degree - 1, total_degree);
