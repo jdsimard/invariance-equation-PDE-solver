@@ -40,10 +40,10 @@ and
 $$\sum_{|m| = i},$$
 is the summation over all multi-set indices $m$ such that the indices add up to the total $i$.
 
-Now we define a new operator $e : C^{\omega} \times \mathbb{R}^{\nu} \rightarrow \mathbb{R}^{n}$, taking as inputs an analytic mapping of the same dimensions as $\pi(\cdot)$ and a vector in $\mathbb{R}^{\nu}$, via
+Now we define a new operator $e : C^{\omega}(\mathbb{R}^{\nu},\mathbb{R}^{n}) \times \mathbb{R}^{\nu} \rightarrow \mathbb{R}^{n}$, taking as inputs an analytic mapping of the same dimensions as $\pi(\cdot)$ and a vector in $\mathbb{R}^{\nu}$, via
 $$e(\hat{\pi},\omega) := \frac{\partial \hat{\pi}}{\partial \omega} s(\omega) - f\big(\hat{\pi}(\omega),\ell(\omega)\big).$$
 There are two important properties to note about this operator. The first is that if the mappings $s(\cdot)$, $\ell(\cdot)$, and $f(\cdot,\cdot)$ are analytic, then for any analytic $\hat{\pi}(\cdot)$ the mapping $e(\hat{\pi}(\omega),\omega)$ is also analytic in the variable $\omega$ and can be represented exactly by its Taylor series. The second important property to note is that, with $\pi(\cdot)$ the exact solution of the PDE, the mapping $e(\pi(\omega),\omega) = 0$ for all $\omega$, and if the solution to the PDE is unique, then $\pi(\cdot)$ is the only mapping that zeros the operator $e(\cdot,\cdot)$ for all $\omega$. These two points form the crux of the approach: for $\pi(\cdot)$ and $\hat{\pi}(\cdot) \neq \pi(\cdot)$ each composed with the operator $e(\cdot,\cdot)$ we have that
-$$e(\pi(\omega),\omega) = E \omega + \sum_{i = 1}^{\infty} \sum_{|m| = i} E_{m} \omega^m = 0 \Rightarrow E = 0 \land E_m = 0 \forall \ m,$$
+$$e(\pi(\omega),\omega) = E \omega + \sum_{i = 1}^{\infty} \sum_{|m| = i} E_{m} \omega^m = 0 \ \forall \omega \quad \Rightarrow \quad (E = 0) \land (E_m = 0) \ \forall \ m,$$
 and
 $$e(\hat{\pi}(\omega),\omega) = \hat{E} \omega + \sum_{i = 1}^{\infty} \sum_{|m| = i} \hat{E}_{m} \omega^m.$$
 That is, the solution $\pi(\cdot)$ is the only mapping such that its composition with the operator $e(\cdot,\cdot)$ has a Taylor series representation with all coefficients equal to zero, and any other mapping composed with $e(\cdot,\cdot)$ has a Taylor series representation with some coefficients that are not zero.
@@ -66,13 +66,20 @@ Proof that, under certain nonresonance conditions, the system of equations $C(\h
 - the structure of the solution properties (.csv), solution coefficients (.csv), and solution symfuns (.mat) files
 - checking for consistency of the mappings given by the user; checking that the mappings form a well-posed and solvable PDE
 
+# Project Organization
+
+# Usage
 
 
 
 
 
 
-# Notes
+
+
+
+
+# Old Notes
 
 #################
 
