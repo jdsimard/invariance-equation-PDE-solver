@@ -11,7 +11,7 @@ filenames.properties = strcat(filenames.prefix,'_properties.','csv');
 filenames.coefficients = strcat(filenames.prefix,'_coefficients.','csv');
 filenames.symfuns = strcat(filenames.prefix,'_symfuns.','mat');
 
-desired_total_order = 5;
+desired_total_order = 2;
 for i1 = 1 : 1 : desired_total_order
   if symbolic_pde_solver.internal_utils.solver.solve_coefficients_of_next_total_order(filenames.properties,filenames.coefficients,filenames.symfuns) == false
     % the coefficients were not successfully determined for some reason,
@@ -27,6 +27,13 @@ clear all;
 
 
 % function to recover a known solution
+filenames.prefix = 'solution_proto_example_linear_linear';
+filenames.properties = strcat(filenames.prefix,'_properties.','csv');
+filenames.coefficients = strcat(filenames.prefix,'_coefficients.','csv');
+[pi_symfun, pi_symfun_properties] = symbolic_pde_solver.GetSolutionAsSymbolicFunction(filenames.properties,filenames.coefficients);
+[pi_handle, pi_handle_properties] = symbolic_pde_solver.GetSolutionAsFunctionHandle(filenames.properties,filenames.coefficients);
+filenames.new_mfile_name = 'solution_proto_example_linear_linear_mfile.m';
+symbolic_pde_solver.SaveSolutionAsFunctionFile(filenames.properties,filenames.coefficients,filenames.new_mfile_name);
 
 % function to check the PDE error
 
