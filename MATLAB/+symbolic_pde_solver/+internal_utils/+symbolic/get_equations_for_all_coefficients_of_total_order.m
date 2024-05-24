@@ -19,9 +19,13 @@ function [eqns] = get_equations_for_all_coefficients_of_total_order(fn_e,desired
   % to (2,0,1) and then use it to calculate (2,1,1) and (2,0,2) with one
   % more partial derivative each without repeating operations. This would
   % use more space, less time.
-  eqns = [];
-  for i1 = 1 : 1 : size(multiset_combos,1)
-    eqns = [eqns, symbolic_pde_solver.internal_utils.symbolic.get_equation_for_coefficient(fn_e,multiset_combos(i1,:))];
+  n = length(subs(formula(fn_e),w,zeros(size(w))));
+  eqns = sym(zeros(n,size(multiset_combos,1)));
+  
+  % my machine can't handle this parallel process at the moment
+  %parfor i1 = 1 : size(multiset_combos,1)
+  for i1 = 1 : size(multiset_combos,1)
+    eqns(:,i1) = symbolic_pde_solver.internal_utils.symbolic.get_equation_for_coefficient(fn_e,multiset_combos(i1,:));
   end
 
 end

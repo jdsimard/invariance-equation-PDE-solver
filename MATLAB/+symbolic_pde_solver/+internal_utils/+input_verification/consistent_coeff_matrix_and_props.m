@@ -2,11 +2,6 @@ function [consistency_state] = consistent_coeff_matrix_and_props(num_rows_coeffs
 %UNTITLED7 Summary of this function goes here
 %   % check consistency of coefficients: n rows, (sum_{1}^{d} d + nu - 1 choose d) total columns
 
-  % based upon the number of independent variables nu and the known
-  % monomial total degree known_degree, calculate the expected number of
-  % columns in the coefficients matrix
-  expected_cols_in_coeffs_mat = 0;
-
   if known_degree < 0
     % the known degree should not be negative, return false
     consistency_state = false;
@@ -20,9 +15,10 @@ function [consistency_state] = consistent_coeff_matrix_and_props(num_rows_coeffs
     return;
   end
 
-  for i1 = 1 : 1 : known_degree
-    expected_cols_in_coeffs_mat = expected_cols_in_coeffs_mat + nchoosek(nu + i1 - 1, i1);
-  end
+  % based upon the number of independent variables nu and the known
+  % monomial total degree known_degree, calculate the expected number of
+  % columns in the coefficients matrix
+  expected_cols_in_coeffs_mat = symbolic_pde_solver.internal_utils.multiset.num_monomials_of_order_one_to_d(nu,known_degree);
 
   % check consistency of coefficients matrix and dimensions nu, n, and
   % known_degree
