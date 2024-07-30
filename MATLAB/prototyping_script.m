@@ -98,4 +98,8 @@ symbolic_pde_solver.SaveSolutionAsFunctionFile(fname.props,fname.coeffs,fname.ne
 
 
 % function to check the PDE error
+[s, ell, f, w, u, x, nu, m, n] = symbolic_pde_solver.internal_utils.file_io.load_functions_defining_pde(fname.symfuns);
+fn_e = symbolic_pde_solver.internal_utils.symbolic.get_pde_error_function(pi_symfun,s,ell,f);
+[C,T] = coeffs([1 0 0 0 0]*fn_e,'All');
+joinCT = [transpose(T), vpa(transpose(C))];
 
